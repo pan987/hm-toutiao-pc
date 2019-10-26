@@ -1,9 +1,13 @@
 <template>
-  <div id="app">hm-toutiao-pc<el-button type="danger">危险按钮</el-button></div>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
-<script>export default {
+<script>
+export default {
   name: 'app'
-}</script>
+}
+</script>
 
 <style lang="less"></style>
