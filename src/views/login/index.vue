@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import local from '@/utils/local'
 export default {
   data () {
     const checkMobile = (rule, value, callback) => {
@@ -39,8 +40,8 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '',
-        code: ''
+        mobile: '13911111111',
+        code: '246810'
       },
       // loginRules和loginForm是并列的
       loginRules: {
@@ -62,6 +63,7 @@ export default {
           this.$http
             .post('authorizations', this.loginForm)
             .then(res => {
+              local.setUser(res.data.data)
               this.$router.push('/')
             })
             .catch(() => {
