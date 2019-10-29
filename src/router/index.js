@@ -5,6 +5,8 @@ import Home from '@/views/home'
 import Welcome from '@/views/welcome'
 import notFound from '@/views/notfind'
 import local from '@/utils/local'
+import Article from '@/views/article'
+import Setting from '@/views/setting'
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -18,7 +20,15 @@ const router = new VueRouter({
     children: [{
       path: '',
       component: Welcome
-    }]
+    }, {
+      path: '/article',
+      component: Article
+    },
+    {
+      path: '/setting',
+      component: Setting
+    }
+    ]
   },
   {
     path: '*',

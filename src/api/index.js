@@ -13,7 +13,7 @@ axios.interceptors.request.use(function (config) {
   return Promise.reject(error)
 })
 
-// 添加响应拦截器,监听响应状态码,如果是401(你传递一个失效的token给服务器/用户可能没有传token),跳转到登录页
+// 添加响应拦截器, 监听响应状态码, 如果是401(你传递一个失效的token给服务器 / 用户可能没有传token), 跳转到登录页
 axios.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   return response

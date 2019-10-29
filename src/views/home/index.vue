@@ -3,7 +3,7 @@
     <el-aside :width="isOpen?'200px':'64px'">
       <div class="logo" :class="{smallLogo:!isOpen}"></div>
       <el-menu
-        default-active="/"
+        :default-active="$route.path"
         background-color="#002033"
         text-color="#fff"
         active-text-color="#ffd04b"
@@ -49,19 +49,23 @@
 
         <el-dropdown class="dropdown">
           <span class="el-dropdown-link">
-            <img src="../../assets/avatar.jpg" alt />
-            <span class="username">用户名</span>
+            <img :src="userInfo.photo" alt />
+            <span class="username">{{userInfo.name}}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>
-              <span class></span>
+          <el-dropdown-menu slot="dropdown" >
+            <el-dropdown-item @click.native="setting">
               <span>个人设置</span>
             </el-dropdown-item>
-            <el-dropdown-item>
-              <span class></span>
+            <el-dropdown-item @click.native="logout">
               <span>退出登录</span>
             </el-dropdown-item>
+            <!-- <el-dropdown-item icon="el-icon-setting" command="setting">
+              个人设置
+            </el-dropdown-item>
+            <el-dropdown-item icon="el-icon-unlock" command="logout">
+              退出登录
+            </el-dropdown-item> -->
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -73,17 +77,35 @@
 </template>
 
 <script>
+import local from '@/utils/local'
 export default {
   data () {
     return {
-      isOpen: true
+      isOpen: true,
+      userInfo: {}
     }
   },
   methods: {
     toggleMenu () {
       this.isOpen = !this.isOpen
+    },
+    // handelClick (command) {
+    //   this[command]()
+    // },
+    setting () {
+      this.$router.push('/setting')
+    },
+    logout () {
+      local.removeUser()
+      this.$router.push('/login')
     }
+  },
+  created () {
+    const user = local.getUser() || {}
+    this.userInfo.name = user.name
+    this.userInfo.photo = user.photo
   }
+
 }
 </script>
 
