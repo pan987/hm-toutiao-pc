@@ -47,25 +47,25 @@
         <span class="el-icon-s-fold icon" @click="toggleMenu"></span>
         <span class="text">江苏传智播客科技教育有限公司</span>
 
-        <el-dropdown class="dropdown">
+        <el-dropdown class="dropdown" @command="handelClick">
           <span class="el-dropdown-link">
             <img :src="userInfo.photo" alt />
             <span class="username">{{userInfo.name}}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown" >
-            <el-dropdown-item @click.native="setting">
+            <!-- <el-dropdown-item @click.native="setting">
               <span>个人设置</span>
             </el-dropdown-item>
             <el-dropdown-item @click.native="logout">
               <span>退出登录</span>
-            </el-dropdown-item>
-            <!-- <el-dropdown-item icon="el-icon-setting" command="setting">
+            </el-dropdown-item> -->
+            <el-dropdown-item icon="el-icon-setting" command="setting">
               个人设置
             </el-dropdown-item>
             <el-dropdown-item icon="el-icon-unlock" command="logout">
               退出登录
-            </el-dropdown-item> -->
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -89,9 +89,9 @@ export default {
     toggleMenu () {
       this.isOpen = !this.isOpen
     },
-    // handelClick (command) {
-    //   this[command]()
-    // },
+    handelClick (command) {
+      this[command]()
+    },
     setting () {
       this.$router.push('/setting')
     },

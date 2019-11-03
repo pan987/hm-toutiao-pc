@@ -7,6 +7,7 @@ import axios from '@/api'
 // import myBread from '@/components/my-bread'
 // Vue.component('my-bread', myBread)
 import plugin from '@/components'
+import '@/styles/index.less'
 Vue.use(plugin)
 
 Vue.prototype.$http = axios
