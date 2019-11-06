@@ -14,7 +14,7 @@
 
           </el-table-column>
           <el-table-column  label="状态">
-              <!-- 作用域插槽,子组件向父组件传值 第五条视频 -->
+              <!-- 作用域插槽,子组件向父组件传值 第五天视频 -->
               <template slot-scope="scope">
                   {{scope.row.comment_status?'正常':'关闭'}}
               </template>

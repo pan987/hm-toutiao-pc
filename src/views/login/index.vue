@@ -40,7 +40,7 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '13911111111',
+        mobile: '17612345678',
         code: '246810'
       },
       // loginRules和loginForm是并列的

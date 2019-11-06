@@ -78,11 +78,15 @@
 
 <script>
 import local from '@/utils/local'
+import EventBus from '@/EventBus'
 export default {
   data () {
     return {
       isOpen: true,
-      userInfo: {}
+      userInfo: {
+        name: '',
+        photo: ''
+      }
     }
   },
   methods: {
@@ -104,6 +108,12 @@ export default {
     const user = local.getUser() || {}
     this.userInfo.name = user.name
     this.userInfo.photo = user.photo
+    EventBus.$on('uploadName', (name) => {
+      this.userInfo.name = name
+    })
+    EventBus.$on('uploadPhoto', (photo) => {
+      this.userInfo.photo = photo
+    })
   }
 
 }
